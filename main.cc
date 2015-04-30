@@ -1,6 +1,6 @@
 #define NREAD 10000  //numbers of reads of the file, this splits the whole input file into N read chunks
 //If we divide enough such that each segment can fit in computer cache, computating may speed up.
-#define NBINS 240 //number of bins, such as country index #
+#define NBINS 255 //number of bins, such as country index #
 #define PIXEL_SIZE 231.65635825  //pixel size in m  (assuming x_size = y_size)
 
 #define INPUT_INT

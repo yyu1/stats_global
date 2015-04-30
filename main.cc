@@ -190,9 +190,9 @@ int main(int argc, char* argv[])
 
 	#ifdef INPUT_INT
 		//integer input time is scaled by 10
-		out_file << "255," << global_total << ',' << global_count << ',' << global_total/10 * (pixel_area / 10000) / 1000000 / 2 << '\n';
+		out_file << NBINS << ',' << global_total << ',' << global_count << ',' << global_total/10 * (pixel_area / 10000) / 1000000 / 2 << '\n';
 	#else
-		out_file << "255," << global_total << ',' << global_count << ',' << global_total * (pixel_area / 10000) / 1000000 / 2 << '\n';
+		out_file << NBINS << ',' << global_total << ',' << global_count << ',' << global_total * (pixel_area / 10000) / 1000000 / 2 << '\n';
 	#endif
 
 	out_file.close();

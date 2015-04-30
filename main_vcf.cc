@@ -5,7 +5,7 @@
 #define NBINS 255 //number of bins, such as country index #
 #define PIXEL_SIZE 231.65635825  //pixel size in m  (assuming x_size = y_size)
 
-#define VCF_THRESH2 20
+#define VCF_THRESH2 10
 #define VCF_THRESH3 25
 
 #define INPUT_INT

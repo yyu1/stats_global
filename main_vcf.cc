@@ -257,7 +257,7 @@ int main(int argc, char* argv[])
 	out_file << "Country Code, NPixels, Total_AGB_Tg, NPixels_vcf" << VCF_THRESH2 << ", Total_AGB_Tg_vcf" << VCF_THRESH2 << ", NPixels_vcf" << VCF_THRESH3 << ", Total_AGB_Tg_vcf" << VCF_THRESH3 << '\n';
 	double pixel_area = PIXEL_SIZE * PIXEL_SIZE;  //pixel area in m^2
 	for (int i=0; i<NBINS; i++) {
-		//if (count[i] > 0) {
+		if (count[i] > 0) {
 			#ifdef INPUT_INT
 				//integer input time is scaled by 10
 				out_file << i << ',' << count[i] << ',' << total[i] / 10 * (pixel_area / 10000) / 1000000 / 2;
@@ -268,7 +268,7 @@ int main(int argc, char* argv[])
 				out_file << ',' << count2[i] << ',' << total2[i] * (pixel_area / 10000) / 1000000 / 2;
 				out_file << ',' << count3[i] << ',' << total3[i] * (pixel_area / 10000) / 1000000 / 2 << '\n';
 			#endif
-		//}
+		}
 	}
 
 	#ifdef INPUT_INT

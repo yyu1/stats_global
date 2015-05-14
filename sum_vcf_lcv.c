@@ -4,7 +4,9 @@
 inline double get_carbon_frac(unsigned char lcv) {
   switch (lcv) {
     case 40:
-      return (double) 0.47;
+      return (double) 0.48;
+		case 160:
+			return (double) 0.48;
     case 50:
       return (double) 0.48;
     case 60:
@@ -13,6 +15,8 @@ inline double get_carbon_frac(unsigned char lcv) {
       return (double) 0.51;
     case 90:
       return (double) 0.51;
+		case 100:
+			return (double) 0.495;
     default:
       return (double) 0.47;
   }

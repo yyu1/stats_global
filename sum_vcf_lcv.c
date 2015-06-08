@@ -32,7 +32,7 @@ struct global_count_block {
 };
 
 
-global_count_block sum_vcf_lcv(in_t *in_cache, index_t *index_cache, unsigned char *vcf_cache, unsigned char *lcv_cache, unsigned long long npix, double *tmp_total, long long *tmp_count, double *tmp_total2, long long *tmp_count2, double *tmp_total3, long long *tmp_count3) {
+global_count_block sum_vcf_lcv(in_t *in_cache, index_t *index_cache, unsigned char *vcf_cache, unsigned char *lcv_cache, unsigned long long npix, double *tmp_total, long long *tmp_count, double *tmp_total2, long long *tmp_count2, double *tmp_total3, long long *tmp_count3, double *tmp_total4, long long *tmp_count4) {
 
 	global_count_block my_count;
 	my_count.global_total = 0;
@@ -41,6 +41,8 @@ global_count_block sum_vcf_lcv(in_t *in_cache, index_t *index_cache, unsigned ch
 	my_count.global_count2 = 0;
 	my_count.global_total3 = 0;
 	my_count.global_count3 = 0;
+	my_count.global_total4 = 0;
+	my_count.global_count4 = 0;
 
 	//Reset all the temp counters to 0 since we are just starting the local sum here
 	for (int i=0; i<NBINS; i++) {
@@ -50,6 +52,8 @@ global_count_block sum_vcf_lcv(in_t *in_cache, index_t *index_cache, unsigned ch
 		tmp_count2[i] = 0;
 		tmp_total3[i] = 0;
 		tmp_count3[i] = 0;
+		tmp_total4[i] = 0;
+		tmp_count4[i] = 0;
 	}
 
 	register double carbon_frac;
@@ -88,6 +92,18 @@ global_count_block sum_vcf_lcv(in_t *in_cache, index_t *index_cache, unsigned ch
 						tmp_total3[index_cache[i]] += in_cache[i] * carbon_frac;
 						++tmp_count3[index_cache[i]];
 					}
+					
+					//VCF Thresh4
+					if (vcf_cache[i] >= VCF_THRESH4) {
+						my_count.global_total4 += in_cache[i] * carbon_frac;
+						++my_count.global_count4;
+
+						if ((index_cache[i] >= 0) && (index_cache[i] < NBINS)) {
+							tmp_total4[index_cache[i]] += in_cache[i] * carbon_frac;
+							++tmp_count4[index_cache[i]];
+						}
+					}
+
 				}
 			}
 		}

@@ -29,6 +29,8 @@ struct global_count_block {
 	long long global_count2;
 	double global_total3;
 	long long global_count3;
+	double global_total4;
+	long long global_count4;
 };
 
 

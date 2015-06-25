@@ -32,7 +32,7 @@
 #include <iostream>
 #include <fstream>
 #include <sys/stat.h>
-#include "sum_vcf_lcv.c"
+#include "sum_vcf_lcv_temp.c"
 
 int main(int argc, char* argv[])
 {

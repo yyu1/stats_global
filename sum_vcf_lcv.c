@@ -1,5 +1,7 @@
 //Given pointers to caches that have been read from disk already. Calculate the sums
 
+#define VCF_MIN	5
+
 
 inline double get_carbon_frac(unsigned char lcv) {
   switch (lcv) {
@@ -69,7 +71,7 @@ global_count_block sum_vcf_lcv(in_t *in_cache, index_t *index_cache, unsigned ch
 			my_count.global_total += in_cache[i] * carbon_frac;
 			++my_count.global_count;
 
-			if ((index_cache[i] >= 0) && (index_cache[i] < NBINS)) {    // ignore index that fall outside (i.e. -1 for water)
+			if ((index_cache[i] >= 0) && (index_cache[i] < NBINS) && (vcf_cache[i] >= VCF_MIN)) {    // ignore index that fall outside (i.e. -1 for water)
 				tmp_total[index_cache[i]] += in_cache[i] * carbon_frac;
 				++tmp_count[index_cache[i]];
 			}
